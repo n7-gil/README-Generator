@@ -8,9 +8,14 @@ const questions = ["What is your project title?", "Who is the target audience fo
 
 console.log(questions[0]);
 
-const answerTitle = process.argv.slice(2);
-
+const answerTitle = `# ${process.argv[2]}`;
 console.log(answerTitle);
+
+fs.writeFile('newreadme.md', answerTitle, function (err) {
+    if (err) throw err;
+    console.log('Success!');
+});
+
 
 
 // TODO: Create a function to write README file
