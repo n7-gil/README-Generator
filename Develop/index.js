@@ -72,12 +72,38 @@ inquirer
       name: 'test',
     },
   ])
-.then((response) => {
-        const description = `## Description \n \n \n \n`;
-        fileContent += description;
+  .then((response) => {
+    const description = `## Description \n \n \n \n`;
+    fileContent += description;
+    fileContent += response.description;
 
-        fileContent += response.description     
-});
+    const tableContents = `## Table of Contents \n \n \n \n`;
+    fileContent += tableContents;
+    fileContent += response.tableContents;
+
+    const installation = `## Installation \n \n \n \n`;
+    fileContent += installation;
+    fileContent += response.installation;
+
+    const usage = `## Usage \n \n \n \n`;
+    fileContent += usage;
+    fileContent += response.usage;
+
+    const license = `## License \n \n \n \n`;
+    fileContent += license;
+    fileContent += response.license;
+
+    const contributing = `## Contributing \n \n \n \n`;
+    fileContent += contributing;
+    fileContent += response.contributing;
+
+    const tests = `## Tests \n \n \n \n`;
+    fileContent += tests;
+    fileContent += response.tests;
+
+
+  });
+
 
 
 writeToFile('newreadme.md', fileContent);
