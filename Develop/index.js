@@ -1,16 +1,16 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const fs = require('fs')
+const fs = require('fs');
+const generateMarkdown = require('./utils/generateMarkdown.js');
 
 
 // TODO: Create an array of questions for user input
-const questions = ["What is your project title?", "What is the project's description?", "What problem does it solve?", 'What?'];
+const questions = ["What is your project title?"];
 let fileContent = "";
 
-console.log(questions[0]);
+// console.log(questions[0]);
 
-const answerTitle = `# ${process.argv[2]} \n \n \n \n`;
-console.log(answerTitle);
+const answerTitle = `# Title  \n \n \n \n`;
 fileContent += answerTitle;
 
 const description = `## Description \n \n \n \n`;
@@ -36,6 +36,12 @@ fileContent += tests;
 
 const readmeQuestions = `## Questions \n \n \n \n`;
 fileContent += readmeQuestions;
+
+const github = `## Github \n \n \n \n`;
+fileContent += github;
+
+const email = `## Email \n \n \n \n`;
+fileContent += email;
 
 
 
@@ -68,15 +74,25 @@ inquirer
     },
     {
       type: 'input',
-      message: 'testing',
+      message: 'What testing procedures did you use?',
       name: 'test',
+    },
+    {
+      type: 'input',
+      message: 'What is your Github username?',
+      name: 'github',
+    },
+    {
+      type: 'input',
+      message: 'What is your email?',
+      name: 'email',
     },
   ])
 .then((response) => {
-        const description = `## Description \n \n \n \n`;
-        fileContent += description;
+        const answerTitle = `## Title \n \n \n \n`;
+        fileContent += answerTitle;
 
-        fileContent += response.description     
+        fileContent += response.answerTitle     
 });
 
 
@@ -96,7 +112,18 @@ function writeToFile(fileName, data) {
 
 
 // TODO: Create a function to initialize app
-function init() {}
+async function init() {
+// let responses = await inquirer.prompt();
+
+// let fileContent = generateMarkdown(responses);
+
+// fs.writeFile(fileName, data, function (err) {
+//   if (err) throw err;
+//   console.log('Success! New file created');
+// });
+
+
+}
 
 // Function call to initialize app
 init();
